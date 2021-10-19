@@ -18,7 +18,7 @@ az login
 
 Clone the sample repository:
 ```terminal
-git clone https://github.com/LianwMS/WebAppStorageMISample.git
+git clone https://github.com/Azure-Samples/serviceconnector-webapp-storageblob-dotnet.git
 ```
 
 ### 3. Create App Service 
