@@ -1,57 +1,47 @@
-# Project Name
+# Using Service Connector to connect Azure WebApp with Azure Storage Blob
 
-(short, 1-3 sentenced, description of the project)
-
-## Features
-
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
+The repository offers the sample codes of connecting Azure Storage Blob to Azure WebApp with `system managed identity`. Follow the [steps](#getting-started) below to create and verify the connection.
 
 ## Getting Started
 
-### Prerequisites
+### 1. Prerequisites
 
-(ideally very short, if any)
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Install the <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 or higher to provision and configure Azure resources.
+- Sign in to Azure with CLI command
 
-- OS
-- Library version
-- ...
+```azurecli
+az login
+```
 
-### Installation
+### 2. Clone the sample codes
 
-(ideally very short)
+Clone the sample repository:
+```terminal
+git clone https://github.com/LianwMS/WebAppStorageMISample.git
+```
 
-- npm install [package name]
-- mvn install
-- ...
+### 3. Create App Service 
+Go to the root folder of repository:
+```terminal
+cd WebAppStorageMISample
+```
 
-### Quickstart
-(Add steps to get up and running quickly)
+Create the webapp use webapp up:
+```terminal
+az webapp up --name WebAPPStorageMISample --sku B1 --location eastus
+```
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+### 4. Create Azure Storage
+```terminal
+az storage account create --name storageforwebappsample --resource-group {rg_name} --sku Standard_RAGRS --https-only
+```
 
+### 5. Create the connection
+```terminal
+az webapp connection create storage-blob -g {rg_name} -n WebAPPStorageMISample --tg {rg_name} --account storageforwebappsample --system-identity
+```
 
-## Demo
-
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+### 6. Validate the connection
+Open the url https://webappstoragemisample.azurewebsites.net/.
+You will see `Hello Resource Connector! Current is {UTC Time Now}.`

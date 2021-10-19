@@ -10,6 +10,8 @@
 *.userosscache
 *.sln.docstates
 
+*/obj/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -23,6 +25,7 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
+[Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -60,6 +63,9 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
 
 # StyleCop
 StyleCopReport.xml
@@ -136,6 +142,9 @@ _TeamCity*
 # AxoCover is a Code Coverage Tool
 .axoCover/*
 !.axoCover/settings.json
+
+# Coverlet is a free, cross platform Code Coverage Tool
+coverage*[.json, .xml, .info]
 
 # Visual Studio code coverage results
 *.coverage
@@ -348,3 +357,16 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+
+src/Cupertino.Web/Properties/ServiceDependencies/
+src/Cupertino.Web/Properties/serviceDependencies.json
+src/Cupertino.Web/Properties/serviceDependencies.*.json
+
+/src/Microsoft.Cupertino.ResourceProvider/Properties/ServiceDependencies/
+/src/Microsoft.Cupertino.ResourceProvider/Properties/serviceDependencies.*.json
+
+.azure/
+**/ServiceDependencies/
