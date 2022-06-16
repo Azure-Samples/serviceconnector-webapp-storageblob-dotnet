@@ -1,3 +1,13 @@
+---
+page_type: sample
+languages:
+  - dotnet
+products:
+  - azure
+  - service-connector
+urlFragment: serviceconnector-webapp-storageblob-dotnet
+---
+
 # Using Service Connector to connect Azure WebApp with Azure Storage Blob
 
 The repository offers the sample codes of connecting Azure Storage Blob to Azure WebApp with `system managed identity`. Follow the [steps](#getting-started) below to create and verify the connection.
@@ -24,24 +34,29 @@ git clone https://github.com/Azure-Samples/serviceconnector-webapp-storageblob-d
 ### 3. Create App Service 
 Go to the root folder of repository:
 ```terminal
-cd WebAppStorageMISample
+cd serviceconnector-webapp-storageblob-dotnet
 ```
 
 Create the webapp use webapp up:
 ```terminal
-az webapp up --name WebAPPStorageMISample --sku B1 --location eastus
+az webapp up --name <myAppName> --sku B1 --location eastus --resource-group <myResourceGroupName>
 ```
 
 ### 4. Create Azure Storage
 ```terminal
-az storage account create --name storageforwebappsample --resource-group {rg_name} --sku Standard_RAGRS --https-only
+az storage account create --name <myStorageAccountName> --resource-group <myResourceGroupName> --sku Standard_RAGRS --https-only
 ```
 
 ### 5. Create the connection
 ```terminal
-az webapp connection create storage-blob -g {rg_name} -n WebAPPStorageMISample --tg {rg_name} --account storageforwebappsample --system-identity
+az webapp connection create storage-blob -g <myResourceGroupName> -n <myAppName> --tg <myResourceGroupName> --account <myStorageAccountName> --system-identity
 ```
 
 ### 6. Validate the connection
-Open the url https://webappstoragemisample.azurewebsites.net/.
+Open the url https://<myAppName>.azurewebsites.net/.
 You will see `Hello Resource Connector! Current is {UTC Time Now}.`
+
+### 7. Cleanup the resource
+```azurecli
+az group delete -n <myResourceGroupName> --yes
+```
