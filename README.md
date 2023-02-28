@@ -53,8 +53,8 @@ az webapp connection create storage-blob -g <myResourceGroupName> -n <myAppName>
 ```
 
 ### 6. Validate the connection
-Open the url https://<myAppName>.azurewebsites.net/.
-You will see `Hello Resource Connector! Current is {UTC Time Now}.`
+Open the url `https://<myAppName>.azurewebsites.net/`.
+You will see `Hello Service Connector! Current is {UTC Time Now}.`
 
 ### 7. Cleanup the resource
 ```azurecli
